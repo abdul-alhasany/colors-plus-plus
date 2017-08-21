@@ -1,0 +1,45 @@
+@color: green;
+@blue: blue;
+@yellow: yellow;
+
+.box.darken {
+    background-color: fadein(@blue, 10%);
+    background-color: @color;
+    border: 3px solid darken(@color, 5%);
+    border: 3px solid fadein(@color, 90%);
+    border: 3px solid fade-out(@color, 1);
+    border: 3px solid fade(@color, 75%);
+    border: 3px solid spin(@color,270);
+    border: 3px solid tint(@color, 50%);
+    border: 3px solid shade(@yellow, 50%);
+    border: 3px solid shade(@color, 50%);
+}
+
+.box.lighten {
+    border: 3px solid lighten(purple, 45%);
+}
+
+@colorDark: darken(@color, 20%);
+@colorDark: grayscale(@color);
+@colorDark: #0000FF;
+
+
+.box.darken {
+    background-color: @color;
+    background-color: @yellow;
+    background-color: #808080;
+    border: 3px solid @colorDark;
+}
+
+.box.hue {
+    background-color: spin(@blue,135);
+}
+
+.box.desaturate {
+    background-color: saturate(@color, 50%);
+    background-color: desaturate(spin(@color, 123), 50%);
+}
+
+.box.mix {
+    background-color: mix(@blue, @yellow, 50%);
+}

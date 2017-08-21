@@ -1,0 +1,198 @@
+//out: options-panel.css
+@mainColor: #1b798b;
+.color-plus-plus-options-panel {
+    height: 100%;
+    min-height: 100%;
+    position: absolute;
+    font-family: "Calibri";
+    padding: 10px 30px;
+    background-color: #EAEAEA;
+    box-sizing: border-box;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 450px;
+    z-index: 10;
+    transition: transform 0.6s, opacity 0.3s;
+    opacity: 1;
+    
+    &.hide
+    {
+        opacity: 0;
+        transform: translateX(100%);
+        transition: opacity 0.9s, transform 0.6s;
+    }
+    .vert-resizer {
+        cursor: default;
+    }
+
+    ul {
+        margin: 0;
+    }
+
+    .options-panel-close {
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        font-size: 25px;
+        font-weight: bold;
+        width: 25px;
+        height: 25px;
+        color: darken(@mainColor, 15%);
+        transition: all 0.4s;
+        cursor: pointer;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        z-index: 25;
+
+        &:hover {
+            color: darken(@mainColor, 5%);
+        }
+    }
+    .options-panel-sections > div {
+        width: 100%;
+        margin-bottom: 10px;
+        float: left;
+    }
+
+    .shadow.left {
+        top: 0;
+        background: linear-gradient(to right, #e0e0e0 0%,#eaeaea 100%);
+    }
+
+    .shadow.bottom {
+        bottom: 0;
+        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+    }
+
+    .shadow {
+        display: block;
+        width: 15px;
+        height: 100%;
+        position: absolute;
+        content: " ";
+        left: 0;
+        z-index: 0;
+    }
+
+    h1 {
+        font-size: 20px;
+        border-bottom: 1px solid @mainColor;
+        color: darken(@mainColor, 15%);
+        font-weight: bold;
+
+        span {
+            border-bottom: 3px solid @mainColor;
+            padding: 4px 10px;
+        }
+    }
+  
+
+    .options-highlight-parts {
+        > ul {
+            margin: 0;
+            li {
+                list-style-type: none;
+                display: block;
+                float: left;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+
+        .option-highlight-title {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            text-transform: capitalize;
+        }
+
+        .option-highlight-list {
+            display: block;
+            overflow: hidden;
+            border-radius: 3px;
+            float: left;
+
+            input[type='radio'] {
+                display: none;
+
+                &:checked + label {
+                    background-color: darken(@mainColor, 10%);
+                }
+            }
+
+            input[type='radio'] + label {
+                background-color: @mainColor;
+                padding: 4px 6px;
+                color: white;
+                display: inline-block;
+                transition: all 0.4s;
+                position: relative;
+                float: left;
+                text-align: center;
+                margin: 0;
+                
+
+                &:hover {
+                    background-color: darken(@mainColor, 5%);
+                }
+            }
+        }
+    }
+
+    .options-show-sections,
+    .options-enable-extension {
+        > ul {
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 0;
+            li {
+                list-style-type: none;
+            }
+        }
+
+        input[type='checkbox'] {
+            display: none;
+
+            &:checked + label {
+                background-color: darken(@mainColor, 10%);
+            }
+
+
+            &:not(:checked) + label::after {
+                content: "×";
+            }
+        }
+
+        input[type='checkbox'] + label {
+            background-color: @mainColor;
+            padding: 10px 6px 10px 30px;
+            color: white;
+            display: inline-block;
+            transition: all 0.4s;
+            position: relative;
+            float: left;
+            text-align: left;
+            margin: 0;
+            text-transform: capitalize;
+            display: block;
+            width: 100%;
+
+            &:hover {
+                background-color: darken(@mainColor, 5%);
+            }
+            &::after {
+                position: absolute;
+                content: "✓";
+                left: 10px;
+                height: 100%;
+                top: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "name": "kalimah-colors-plus-plus",
+    "title": "Colors++",
+    "description": "Preview and modifey colors (HEX, RGBa, HSLa and HSVa) as well variables and functions in CSS, SCSS and less files",
+    "keywords": ["css color", "css color preview", "scss", "less.js"],
+    "categories": "visual",
+    "homepage": "https://github.com/kalimah-apps/colors-plus-plus",
+    "version": "1.0.0",
+    "author": ["Abdul Al-Hasany"],
+    "license": "MIT",
+    "engines": {
+        "brackets": ">=0.44.0"
+    }
+}

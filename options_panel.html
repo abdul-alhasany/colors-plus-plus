@@ -1,0 +1,46 @@
+<div class='color-plus-plus-options-panel hide' id='colors-plus-plus-options'>
+    <div class='options-panel-close' title='Close Options'>×</div>
+    <div class='shadow left'></div>
+    <form>
+        <div class='options-panel-sections'>
+            <div class='options-enable-extension'>
+                <h1><span>Enable Extension</span></h1>
+                <ul>
+                    {{#files}}
+                    <li class='optiosn-enable-extension-{{.}}'>
+                        <input name='options-enable-extension[]' type='checkbox' id='options-enable-extension-{{.}}' data-value='{{.}}' />
+                        <label for='options-enable-extension-{{.}}'>Enable for {{.}}</label>
+                    </li>
+                    {{/files}}
+                </ul>
+            </div>
+            <div class='options-show-sections'>
+                <h1><span>Show sections</span></h1>
+                <ul>
+                    {{#sections}}
+                    <li class='option-show-sections-{{processedVar}}'>
+                        <input name='options-show-sections[]' type='checkbox' id='option-show-sections-{{processedVar}}' data-value="{{processedVar}}" />
+                        <label for='option-show-sections-{{processedVar}}'>{{name}}</label>
+                    </li>
+                    {{/sections}}
+                </ul>
+            </div>
+            <div class='options-highlight-parts'>
+                <h1><span>Highlight Options</span></h1>
+                <ul>
+                    {{#parts}}
+                    <li class='option-highlight-{{processedVar}}'>
+                        <span class='option-highlight-title'>{{name}}</span>
+                        <span class='option-highlight-list'>
+                         {{#highlight}}
+                            <input name='options-highlight-{{name}}' type='radio' id='option-highlight-{{name}}-{{.}}' data-value={{.}} />
+                            <label for='option-highlight-{{name}}-{{.}}'>{{.}}</label>
+                         {{/highlight}}
+                    </span>
+                    </li>
+                    {{/parts}}
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
