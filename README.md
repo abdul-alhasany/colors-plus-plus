@@ -1,2 +1,2 @@
-# colors-
+# Kalimah Colors++
 Adobe Brackets Extension
