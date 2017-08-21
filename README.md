@@ -40,10 +40,6 @@ or
 You can click on any colors of the supported formats and the color picker will show
 To edit settings press F11 or Select **Edit > Colors++ Options**
 
-## Issues
-Upon installation through Extension Manager you might receive a message similar to this
-**Installation Failed. The extension encountered an error while starting up**
-Click close and then refresh Adobe Brackets. If the extension did not work then use download the zip folder of the extension and copy it to user folder.
 
 ## Licence
 MIT License
