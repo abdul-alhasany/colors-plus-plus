@@ -38,7 +38,7 @@ or
 
 ## How to use
 You can click on any colors of the supported formats and the color picker will show
-To edit settings press F11 or Select **Edit > Colors++ Options **
+To edit settings press F11 or Select **Edit > Colors++ Options**
 
 ## Issues
 Upon installation through Extension Manager you might receive a message similar to this
