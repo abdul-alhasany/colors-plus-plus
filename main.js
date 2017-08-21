@@ -24,6 +24,14 @@
 /* jslint vars: true, plusplus: true, devel: true, nomen: true, regexp: true, indent: 4, maxerr: 50 */
 /* global define, $, brackets, window */
 
+require.config({
+    paths: {
+        "text" : "lib/text",
+        "i18n" : "lib/i18n"
+    },
+    locale: brackets.getLocale()
+});
+
 /* This extension assist users preview and modifey colors inside brackets in CSS, less and scss files */
 define(function (require, exports, module) {
     "use strict";
