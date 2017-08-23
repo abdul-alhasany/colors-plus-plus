@@ -443,9 +443,6 @@ define(function (require, exports, module) {
             // Clear all markers (if any exists)
             ColorsPP.clearMarkers();
 
-            // Refresh options to get the latest
-            optionsPanel.pref.refersh();
-
             // Get editor
             ColorsPP.activeEditor = EditorManager.getActiveEditor();
             if (ColorsPP.activeEditor) {
