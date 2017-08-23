@@ -37,16 +37,41 @@ define(function (require, exports, module) {
         WorkspaceManager = brackets.getModule("view/WorkspaceManager"),
         Prefs = PreferencesManager.getExtensionPrefs("colorspp_pref"),
         COMMAND_NAME = 'ColorsPP.Options', // package-style naming to avoid collisions;
-        Mustache = brackets.getModule("thirdparty/mustache/mustache"),
-        stateManager = PreferencesManager.stateManager.getPrefixedSystem("colorspp_pref");
+        Mustache = brackets.getModule("thirdparty/mustache/mustache");
 
         Prefs.definePreference("optionsValues", "string", "");
+
         ExtensionUtils.loadStyleSheet(module, "options-panel.css");
 
     var ColorsPP_OptionsPanel = {
         // This contains default values
-        optionsValues: {},
-        savedOptionsValues: JSON.parse(Prefs.get("optionsValues")),
+        optionsValues: {
+            "options-enable-extension": [{
+                "options-enable-extension-CSS": "CSS"
+                    }, {
+                "options-enable-extension-less": "less"
+                    }, {
+                "options-enable-extension-SCSS": "SCSS"
+                    }],
+            "options-show-sections": [{
+                "option-show-sections-color-picker": "color-picker"
+                    }, {
+                "option-show-sections-document-colors": "document-colors"
+                    }, {
+                "option-show-sections-document-color-variables": "document-color-variables"
+                    }, {
+                "option-show-sections-color-combinations": "color-combinations"
+                    }, {
+                "option-show-sections-function-variants": "function-variants"
+                    }],
+            "options-highlight-colors": "background",
+            "options-highlight-variables": "background",
+            "options-highlight-functions": "background"
+        },
+        savedOptionsValues: function ()
+        {
+            return (Prefs.get("optionsValues") == "") ? ColorsPP_OptionsPanel.optionsValues : JSON.parse(Prefs.get("optionsValues"))
+        },
         templateHtml: "",
         init: function () {
 
@@ -90,13 +115,12 @@ define(function (require, exports, module) {
                 ColorsPP_OptionsPanel.form.submit();
             });
 
+            var options = ColorsPP_OptionsPanel.savedOptionsValues();
 
             // Loop through saved options and populate values that have been saved (whether itmes are checked or not)
-            $.each(ColorsPP_OptionsPanel.savedOptionsValues, element => {
+            $.each(options, element => {
                 // If we have an object (array) loop through it and set checked to true
                 // Otherwise set the element to true
-                var options = ColorsPP_OptionsPanel.savedOptionsValues;
-
                 if (typeof options[element] == "object") {
                     $.each(options[element], e => {
                         var dataValue = options[element][e];
@@ -140,8 +164,7 @@ define(function (require, exports, module) {
                 });
 
                 Prefs.set("optionsValues", JSON.stringify(ColorsPP_OptionsPanel.optionsValues));
-                ColorsPP_OptionsPanel.refersh();
-                
+
                 return false;
             });
 
@@ -156,25 +179,23 @@ define(function (require, exports, module) {
                 ColorsPP_OptionsPanel.templateHtml.addClass("hide");
             });
 
-            
+
 
             // Handle Menus and commands 
             ColorsPP_OptionsPanel.handleCommands();
         },
-        refersh: function(){
-            ColorsPP_OptionsPanel.savedOptionsValues = JSON.parse(Prefs.get("optionsValues"));
-        },
         findPref: function (findKey) {
             var found = false;
-
+            var options = ColorsPP_OptionsPanel.savedOptionsValues();
+            
             // Loop through settings
-            for (const key of Object.keys(ColorsPP_OptionsPanel.savedOptionsValues)) {
+            for (const key of Object.keys(options)) {
 
                 // Is it an object or just a pair
-                if (typeof ColorsPP_OptionsPanel.savedOptionsValues[key] == "object") {
+                if (typeof options[key] == "object") {
 
                     // Loop through the nested object
-                    for (const nestedObj of ColorsPP_OptionsPanel.savedOptionsValues[key]) {
+                    for (const nestedObj of options[key]) {
                         // Loop through the nested object
                         for (var keys in nestedObj) {
                             if (keys == findKey) {
@@ -185,7 +206,7 @@ define(function (require, exports, module) {
                     }
                 } else {
                     if (key == findKey) {
-                        found = ColorsPP_OptionsPanel.savedOptionsValues[key];
+                        found = options[key];
                         break;
                     }
                 }
